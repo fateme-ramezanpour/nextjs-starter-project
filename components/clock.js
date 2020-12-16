@@ -16,6 +16,7 @@ function Clock({ lastUpdate, light }) {
     <Container>
       <Row>
         <Col md="6">
+          <h1>ساعت فعلی کشور</h1>
           <div className={light ? 'light' : ''}>
             {format(new Date(lastUpdate))}
             <style jsx>{`

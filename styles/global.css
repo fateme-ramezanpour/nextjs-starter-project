@@ -1,12 +1,26 @@
 /* ensure all pages have Bootstrap CSS */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+@font-face {
+  font-family: 'IranSans';
+  font-style: normal;
+  font-weight: 400;
+  src:
+  url("/fonts/IRANSansWeb.eot");
+  src:
+    url("/fonts/IRANSansWeb.eot?#iefix") format('embedded-opentype'),
+      url("/fonts/IRANSansWeb.woff2") format('woff2'),
+      url("/fonts/IRANSansWeb.woff") format('woff'),
+      url("/fonts/IRANSansWeb.ttf") format('truetype');
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'IranSans', tahoma;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }
 
 a {

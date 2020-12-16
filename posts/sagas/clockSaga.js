@@ -1,5 +1,5 @@
 import { all, call, delay, put, take, takeLatest, takeEvery, fork } from 'redux-saga/effects'
-import { actionTypes, failure, loadDataSuccess, tickClock } from 'posts/actions/actions'
+import { actionTypes, failure, loadDataSuccess, tickClock } from 'posts/actions/clock'
 
 function* runClockSaga() {
   // yield take(actionTypes.START_CLOCK)

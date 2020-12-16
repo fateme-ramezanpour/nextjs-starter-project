@@ -69,7 +69,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { END } from 'redux-saga'
 import { wrapper } from 'posts/store'
-import { loadData, startClock, tickClock } from 'posts/actions/actions'
+import { loadData, startClock, tickClock } from 'posts/actions/clock'
 import Page from 'components/page'
 
 const Index = () => {

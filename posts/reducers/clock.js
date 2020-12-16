@@ -1,4 +1,4 @@
-import { actionTypes } from 'posts/actions/actions'
+import { actionTypes } from 'posts/actions/clock'
 import { HYDRATE } from 'next-redux-wrapper'
 
 const initialState = {

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
 
-import { increment, decrement, reset } from 'posts/actions/actions'
+import { increment, decrement, reset } from 'posts/actions/clock'
 
 const Counter = () => {
   const count = useSelector((state) => state.clock.count)

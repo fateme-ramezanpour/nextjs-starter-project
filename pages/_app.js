@@ -7,6 +7,7 @@
 // export default MyApp
 
 import { wrapper } from 'posts/store'
+import 'styles/global.css'
 
 function App({ Component, pageProps }) {
   return <Component {...pageProps} />

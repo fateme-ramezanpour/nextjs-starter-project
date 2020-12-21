@@ -2,17 +2,20 @@ import { actionTypes } from 'posts/actions/clock'
 import { HYDRATE } from 'next-redux-wrapper'
 
 const initialState = {
-  count: 0,
-  error: false,
-  lastUpdate: 0,
-  light: false,
-  placeholderData: null,
+  
+    count: 0,
+    error: false,
+    lastUpdate: 0,
+    light: false,
+    placeholderData: null,
+
 }
 
 function clock (state = initialState, action) {
   switch (action.type) {
     case HYDRATE: {
-      return { ...state, ...action.payload }
+      // console.log("action.payload",action.payload)
+      return { ...state, ...action.payload.clock }
     }
 
     case actionTypes.FAILURE:
@@ -40,9 +43,10 @@ function clock (state = initialState, action) {
       }
 
     case actionTypes.LOAD_DATA_SUCCESS:
+      console.log("action.data in reducer??????????????????????????????????????????????????", action.data)
       return {
         ...state,
-        ...{ placeholderData: action.data },
+        placeholderData: action.data,
       }
 
     case actionTypes.TICK_CLOCK:

@@ -86,6 +86,7 @@ export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {
   store.dispatch(tickClock(false))
 
   if (!store.getState().placeholderData) {
+    console.log("store.getState().placeholderData>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>",store.getState().placeholderData)
     store.dispatch(loadData())
     store.dispatch(END)
   }

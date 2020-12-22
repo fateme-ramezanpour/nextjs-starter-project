@@ -1,5 +1,6 @@
 import { all, call, delay, put, take, takeLatest, takeEvery, fork } from 'redux-saga/effects'
 import { actionTypes, failure, loadDataSuccess, tickClock } from 'posts/actions/clock'
+import axios from "axios";
 
 function* runClockSaga() {
   // yield take(actionTypes.START_CLOCK)
@@ -11,12 +12,18 @@ function* runClockSaga() {
 
 function* loadDataSaga() {
   try {
-    const res = yield fetch('https://jsonplaceholder.typicode.com/users')
-    const data = yield res.json()
-    yield put(loadDataSuccess(data))
+    const res = yield call(axios.get, 'https://jsonplaceholder.typicode.com/users')
+    yield put(loadDataSuccess(res.data))
   } catch (err) {
     yield put(failure(err))
   }
+  // try {
+  //   const res = yield fetch('https://jsonplaceholder.typicode.com/users')
+  //   const data = yield res.json()
+  //   yield put(loadDataSuccess(data))
+  // } catch (err) {
+  //   yield put(failure(err))
+  // }
 }
 
 

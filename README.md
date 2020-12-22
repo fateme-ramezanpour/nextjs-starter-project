@@ -33,3 +33,10 @@ body {
   font-family: 'FontName', tahoma;
 }
 ```
+## add axios
+
+Promise based HTTP client for the browser and node.js
+
+```
+yarn add axios
+```

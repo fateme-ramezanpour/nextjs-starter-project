@@ -40,3 +40,6 @@ Promise based HTTP client for the browser and node.js
 ```
 yarn add axios
 ```
+## add environment variable
+
+.env file in nextjs is for environment variables, that used with ```process.env.VARIABLE``` in code.

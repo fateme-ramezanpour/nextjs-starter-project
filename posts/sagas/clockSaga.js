@@ -11,8 +11,10 @@ function* runClockSaga() {
 }
 
 function* loadDataSaga() {
+  const url = process.env.URL_HOST +`movie-test`;
+  
   try {
-    const res = yield call(axios.get, 'https://jsonplaceholder.typicode.com/users')
+    const res = yield call(axios.get, url)
     yield put(loadDataSuccess(res.data))
   } catch (err) {
     yield put(failure(err))

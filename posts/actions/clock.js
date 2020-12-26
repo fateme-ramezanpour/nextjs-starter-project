@@ -30,12 +30,10 @@ export function reset() {
 }
 
 export function loadData() {
-  console.log("actionTypes.LOAD_DATA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
   return { type: actionTypes.LOAD_DATA }
 }
 
 export function loadDataSuccess(data) {
-  console.log("data from fetch", data)
   return {
     type: actionTypes.LOAD_DATA_SUCCESS,
     data,

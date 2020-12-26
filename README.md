@@ -42,4 +42,7 @@ yarn add axios
 ```
 ## add environment variable
 
-.env file in nextjs is for environment variables, that used with ```process.env.VARIABLE``` in code.
+```.env``` file in nextjs is for environment variables, that used with ```process.env.VARIABLE``` in code.
+
+## add axios request wrapper
+we write axios request wrapper for your api call. ```(complete this setction later.... ) ```

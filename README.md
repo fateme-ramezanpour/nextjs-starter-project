@@ -46,3 +46,10 @@ yarn add axios
 
 ## add axios request wrapper
 we write axios request wrapper for your api call. ```(complete this setction later.... ) ```
+
+## add next-seo 
+
+```bash
+yarn add next-seo
+``` 
+then add ```next-seo.config.js``` and add ```Schema``` component for google rich snippet 

@@ -68,9 +68,13 @@
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { END } from 'redux-saga'
+import { NextSeo } from 'next-seo'
+
 import { wrapper } from 'posts/store'
 import { loadData, startClock, tickClock } from 'posts/actions/clock'
-import Page from 'components/page'
+import Schema from 'components/Schema';
+import Page from 'components/page';
+import { movieRichSnippet } from "services/richSnippet/movie";
 
 const Index = () => {
   const dispatch = useDispatch()
@@ -79,7 +83,38 @@ const Index = () => {
     dispatch(startClock())
   }, [dispatch])
 
-  return <Page title="Index Page" linkTo="/other" NavigateTo="Other Page" />
+  return (
+    <>
+      <NextSeo
+        title="nextjs starter project"
+        description="This is the starter project for use nextjs with redux, redux-saga and axios"
+        canonical="https://www.canonicalurl.ie/"
+        openGraph={{
+          url: 'https://www.canonicalurl.ie/',
+          title: 'Open Graph Title',
+          description: 'Open Graph Description',
+          images: [
+            {
+              url: 'https://www.example.ie/og-image-01.jpg',
+              width: 800,
+              height: 600,
+              alt: 'Og Image Alt',
+            },
+            {
+              url: 'https://www.example.ie/og-image-02.jpg',
+              width: 900,
+              height: 800,
+              alt: 'Og Image Alt Second',
+            },
+            { url: 'https://www.example.ie/og-image-03.jpg' },
+            { url: 'https://www.example.ie/og-image-04.jpg' },
+          ],
+        }}
+      />
+      <Schema post={movieRichSnippet()} />
+      <Page title="Index Page" linkTo="/other" NavigateTo="Other Page" />
+    </>
+  )
 }
 
 export const getStaticProps = wrapper.getStaticProps(async ({ store }) => {

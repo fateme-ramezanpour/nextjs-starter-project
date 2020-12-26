@@ -53,3 +53,13 @@ we write axios request wrapper for your api call. ```(complete this setction lat
 yarn add next-seo
 ``` 
 then add ```next-seo.config.js``` and add ```Schema``` component for google rich snippet 
+
+## add eslint and prettier
+
+```bash
+yarn add --dev eslint prettier eslint-plugin-react eslint-plugin-react-hooks eslint-config-prettier eslint-plugin-prettier eslint-plugin-jsx-a11y
+```
+and add husky && lint-staged
+```bash
+yarn add --dev husky lint-staged   
+```

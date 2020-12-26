@@ -1,32 +1,41 @@
-import Link from 'next/link'
-import { useSelector } from 'react-redux'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import Counter from './counter'
-import Clock from './clock'
+import Link from 'next/link';
+import { useSelector } from 'react-redux';
+
+import Counter from './counter';
+import Clock from './clock';
 
 function Page({ linkTo, NavigateTo, title }) {
-  const placeholderData = useSelector((state) => state.clock.placeholderData)
-  const error = useSelector((state) => state.clock.error)
-  const light = useSelector((state) => state.clock.light)
-  const lastUpdate = useSelector((state) => state.clock.lastUpdate)
-  return (
-    <div>
-      <h1>{title}</h1>
-      <Clock lastUpdate={lastUpdate} light={light} />
-      <Counter />
-      <nav>
-        <Link href={linkTo}>
-          <a>Navigate: {NavigateTo}</a>
-        </Link>
-      </nav>
-      {placeholderData && (
-        <pre>
-          <code>{JSON.stringify(placeholderData, null, 2)}</code>
-        </pre>
-      )}
-      {error && <p style={{ color: 'red' }}>Error: {error.message}</p>}
-    </div>
-  )
+    const placeholderData = useSelector((state) => state.clock.placeholderData);
+    const error = useSelector((state) => state.clock.error);
+    const light = useSelector((state) => state.clock.light);
+    const lastUpdate = useSelector((state) => state.clock.lastUpdate);
+    return (
+        <div>
+            <h1>{title}</h1>
+            <Clock lastUpdate={lastUpdate} light={light} />
+            <Counter />
+            <nav>
+                <Link href={linkTo}>
+                    <a>Navigate: {NavigateTo}</a>
+                </Link>
+            </nav>
+            {placeholderData && (
+                <pre>
+                    <code>{JSON.stringify(placeholderData, null, 2)}</code>
+                </pre>
+            )}
+            {error && <p style={{ color: 'red' }}>Error: {error.message}</p>}
+        </div>
+    );
 }
 
-export default Page
+// Page.propTypes = {
+//     linkTo: PropTypes.date,
+//     NavigateTo: PropTypes.string,
+//     title: PropTypes.string
+// };
+
+export default Page;

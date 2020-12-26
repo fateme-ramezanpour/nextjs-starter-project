@@ -1,42 +1,39 @@
-import { all, call, delay, put, take, takeLatest, takeEvery, fork } from 'redux-saga/effects'
-import { actionTypes, failure, loadDataSuccess, tickClock } from 'posts/actions/clock'
-import axios from "axios";
-import api from "services/api";
+import { call, delay, put, takeEvery, fork } from 'redux-saga/effects';
+import { actionTypes, failure, loadDataSuccess, tickClock } from 'posts/actions/clock';
+import api from 'services/api';
 
 function* runClockSaga() {
-  // yield take(actionTypes.START_CLOCK)
-  while (true) {
-    yield put(tickClock(false))
-    yield delay(1000)
-  }
+    // yield take(actionTypes.START_CLOCK)
+    while (true) {
+        yield put(tickClock(false));
+        yield delay(1000);
+    }
 }
 
-function* loadDataSaga() 
-{
-  const url = process.env.URL_HOST + `movie-test`;
-  
-  try {
-    const res = yield call(api.fetchGet, url)
-    yield put(loadDataSuccess(res.data))
-  } catch (err) {
-    yield put(failure(err))
-  }
-  // try {
-  //   const res = yield fetch('https://jsonplaceholder.typicode.com/users')
-  //   const data = yield res.json()
-  //   yield put(loadDataSuccess(data))
-  // } catch (err) {
-  //   yield put(failure(err))
-  // }
-}
+function* loadDataSaga() {
+    const url = process.env.URL_HOST + `movie-test`;
 
+    try {
+        const res = yield call(api.fetchGet, url);
+        yield put(loadDataSuccess(res.data));
+    } catch (err) {
+        yield put(failure(err));
+    }
+    // try {
+    //   const res = yield fetch('https://jsonplaceholder.typicode.com/users')
+    //   const data = yield res.json()
+    //   yield put(loadDataSuccess(data))
+    // } catch (err) {
+    //   yield put(failure(err))
+    // }
+}
 
 function* watchloadDataSaga() {
-  yield takeEvery(actionTypes.LOAD_DATA, loadDataSaga);
+    yield takeEvery(actionTypes.LOAD_DATA, loadDataSaga);
 }
 
 function* watchrunClockSaga() {
-  yield takeEvery(actionTypes.START_CLOCK, runClockSaga);
+    yield takeEvery(actionTypes.START_CLOCK, runClockSaga);
 }
 // function* rootSaga() {
 //   yield all([
@@ -45,6 +42,6 @@ function* watchrunClockSaga() {
 //   ])
 // }
 export default function* clockSagas() {
-  yield fork(watchloadDataSaga);
-  yield fork(watchrunClockSaga);
+    yield fork(watchloadDataSaga);
+    yield fork(watchrunClockSaga);
 }

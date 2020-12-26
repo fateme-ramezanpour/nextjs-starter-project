@@ -1,26 +1,27 @@
-import { useSelector, useDispatch } from 'react-redux'
+// import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { increment, decrement, reset } from 'posts/actions/clock'
+import { increment, decrement, reset } from 'posts/actions/clock';
 
 const Counter = () => {
-  const count = useSelector((state) => state.clock.count)
-  const dispatch = useDispatch()
+    const count = useSelector((state) => state.clock.count);
+    const dispatch = useDispatch();
 
-  return (
-    <div>
-      <style jsx>{`
-        div {
-          padding: 0 0 20px 0;
-        }
-      `}</style>
-      <h1>
-        Count: <span>{count}</span>
-      </h1>
-      <button onClick={() => dispatch(increment())}>+1</button>
-      <button onClick={() => dispatch(decrement())}>-1</button>
-      <button onClick={() => dispatch(reset())}>Reset</button>
-    </div>
-  )
-}
+    return (
+        <div>
+            <style jsx>{`
+                div {
+                    padding: 0 0 20px 0;
+                }
+            `}</style>
+            <h1>
+                Count: <span>{count}</span>
+            </h1>
+            <button onClick={() => dispatch(increment())}>+1</button>
+            <button onClick={() => dispatch(decrement())}>-1</button>
+            <button onClick={() => dispatch(reset())}>Reset</button>
+        </div>
+    );
+};
 
-export default Counter
+export default Counter;

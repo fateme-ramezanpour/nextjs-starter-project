@@ -17,10 +17,12 @@
     "build": "next build",
     "start": "next start -p 9119",
     "lint": "eslint .",
-    "lint-fix": "eslint --fix .",  
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "lint-fix": "eslint --fix .",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "analyze": "cross-env ANALYZE=true yarn build"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^10.0.4",
     "@reduxjs/toolkit": "^1.5.0",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
@@ -36,6 +38,7 @@
   },
   "devDependencies": {
     "babel-plugin-module-resolver": "^4.0.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.16.0",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",

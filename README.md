@@ -63,3 +63,36 @@ and add husky && lint-staged
 ```bash
 yarn add --dev husky lint-staged   
 ```
+
+## add bundle analyzer
+
+```bash
+yarn add @next/bundle-analyzer
+```
+and
+```bash
+yarn add --dev cross-env  
+```
+then make next.config.js file and make bundle analyzer config at below
+
+```
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+const nextConfig = {
+  // any configs you need
+}
+
+module.exports = withBundleAnalyzer(nextConfig)
+```
+in package.json file in script add below code 
+
+```bash
+    "analyze": "cross-env ANALYZE=true yarn build"
+```
+when you run 
+```bash 
+yarn analyze
+``` 
+you can see in your browser another tab that show your page and chunk size 

@@ -2,8 +2,13 @@
   "name": "salamcinema-new-design.nextjs",
   "version": "0.1.0",
   "private": true,
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
-    "*.js": [
+    "./**/*.{js,jsx,ts,tsx}": [
       "eslint --fix"
     ]
   },
@@ -12,16 +17,9 @@
     "build": "next build",
     "start": "next start -p 9119",
     "lint": "eslint .",
-    "lint-fix": "eslint --fix .",
+    "lint-fix": "eslint --fix .",  
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
-  "husky": {
-    "hooks": {
-      "applypatch-msg": "echo [Husky] applypatch-msg"
-
-    }
-  },
-  
   "dependencies": {
     "@reduxjs/toolkit": "^1.5.0",
     "axios": "^0.21.0",

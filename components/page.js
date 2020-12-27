@@ -32,10 +32,10 @@ function Page({ linkTo, NavigateTo, title }) {
     );
 }
 
-// Page.propTypes = {
-//     linkTo: PropTypes.date,
-//     NavigateTo: PropTypes.string,
-//     title: PropTypes.string
-// };
+Page.propTypes = {
+    linkTo: PropTypes.date,
+    NavigateTo: PropTypes.string,
+    title: PropTypes.string
+};
 
 export default Page;

@@ -42,8 +42,8 @@ function Clock({ lastUpdate, light }) {
 }
 
 Clock.propTypes = {
-    lastUpdate: PropTypes.date,
-    light: PropTypes.string
+    lastUpdate: PropTypes.number,
+    light: PropTypes.bool
 };
 
 export default Clock;

@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 import Counter from './counter';
 import Clock from './clock';
-
+import styles from 'components/page.module.scss';
 function Page({ linkTo, NavigateTo, title }) {
     const placeholderData = useSelector((state) => state.clock.placeholderData);
     const error = useSelector((state) => state.clock.error);
@@ -14,7 +14,7 @@ function Page({ linkTo, NavigateTo, title }) {
     const lastUpdate = useSelector((state) => state.clock.lastUpdate);
     return (
         <div>
-            <h1>{title}</h1>
+            <h1 className={styles.titleColor}>{title}</h1>
             <Clock lastUpdate={lastUpdate} light={light} />
             <Counter />
             <nav>
@@ -33,7 +33,7 @@ function Page({ linkTo, NavigateTo, title }) {
 }
 
 Page.propTypes = {
-    linkTo: PropTypes.date,
+    linkTo: PropTypes.string,
     NavigateTo: PropTypes.string,
     title: PropTypes.string
 };

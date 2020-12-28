@@ -19,7 +19,7 @@ const Schema = ({ post }) => {
 };
 
 Schema.propTypes = {
-    post: PropTypes.object
+    post: PropTypes.string
 };
 
 export default memo(Schema);

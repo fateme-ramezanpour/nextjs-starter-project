@@ -96,3 +96,10 @@ when you run
 yarn analyze
 ``` 
 you can see in your browser another tab that show your page and chunk size 
+
+## add sass style
+
+```bash
+yarn add sass
+```
+then make ```style.module.scss``` and import to js file

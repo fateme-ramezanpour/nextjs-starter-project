@@ -44,6 +44,12 @@ yarn add axios
 
 ```.env``` file in nextjs is for environment variables, that used with ```process.env.VARIABLE``` in code.
 
+notice that your environment variables be without ``` " ``` and ``` ;``` at end of variables
+
+because you may have different variables in develop and production (sample that, is call api in develop and production mode) nextjs use ```.env.development ``` and ```.env.production ```
+
+**when you change these file, you must re run your project for see this changes add.
+
 ## add axios request wrapper
 we write axios request wrapper for your api call. ```(complete this setction later.... ) ```
 

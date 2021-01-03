@@ -109,3 +109,5 @@ you can see in your browser another tab that show your page and chunk size
 yarn add sass
 ```
 then make ```style.module.scss``` and import to js file
+
+if you have ```.scss``` for all page in project add ```global.scss``` file in ```style/``` and import it in ```_app.js``` like import ```global.css```

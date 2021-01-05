@@ -103,6 +103,31 @@ yarn analyze
 ``` 
 you can see in your browser another tab that show your page and chunk size 
 
+## use multiple plugin in next
+- first 
+```bash 
+yarn add next-compose-plugins
+```
+- then add this code in ```next.config.js```
+```bash
+const withPlugins = require('next-compose-plugins');
+
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true'
+});
+const plugin = [
+  //plugin is here for example
+  withBundleAnalyzer
+]
+const nextConfig = {
+  //nextjs config place here.
+  images: {
+          domains: ['example.local'],
+        },
+};
+module.exports = withPlugins([...plugins],nextConfig);
+```
+
 ## add sass style
 
 ```bash

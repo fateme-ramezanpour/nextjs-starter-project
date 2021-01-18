@@ -11,11 +11,12 @@ function* runClockSaga() {
 }
 
 function* loadDataSaga() {
-    const url = process.env.URL_HOST + `movie-test`;
+    const url = `movie-test`;
 
     try {
         const res = yield call(api.fetchGet, url);
         yield put(loadDataSuccess(res.data));
+        console.log('res.dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', res.data);
     } catch (err) {
         yield put(failure(err));
     }

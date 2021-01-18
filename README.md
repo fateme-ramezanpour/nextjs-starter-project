@@ -48,7 +48,17 @@ notice that your environment variables be without ``` " ``` and ``` ;``` at end 
 
 because you may have different variables in develop and production (sample that, is call api in develop and production mode) nextjs use ```.env.development ``` and ```.env.production ```
 
-**when you change these file, you must re run your project for see this changes add.
+- you can use them only in Next.js data fetching methods and API routes.
+
+- with ```NEXT_PUBLIC_``` you can use ```process.env.EXAMPLE``` in any where in your code
+
+**due to the Nextjs document ::
+By default all environment variables loaded through ```.env.local``` are only available in the Node.js environment, meaning they won't be exposed to the browser.
+In order to expose a variable to the browser you have to prefix the variable with NEXT_PUBLIC_. For example:
+```code 
+NEXT_PUBLIC_URL_HOST= https://341d0465-d208-4b63-86d6-021ff1e8bf8a.mock.pstmn.io/
+```
+- when you change these file, you must re run your project for see this changes add.
 
 ## add axios request wrapper
 we write axios request wrapper for your api call. ```(complete this setction later.... ) ```

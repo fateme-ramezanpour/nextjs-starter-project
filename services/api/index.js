@@ -3,7 +3,7 @@ class API {
     constructor() {
         this.facade = {};
         this.token = null;
-        const Api = axios.create({ baseURL: `${process.env.URL_HOST}` });
+        const Api = axios.create({ baseURL: `${process.env.NEXT_PUBLIC_URL_HOST}` });
         this.request = (config) => Api.request(config);
         ['get', 'head'].forEach((method) => {
             this[method] = (url, config) => this.request({ ...config, method, url });

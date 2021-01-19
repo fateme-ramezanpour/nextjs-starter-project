@@ -1,24 +1,37 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
 const Title = props => {
-  const [data] = useState(props.data);
-
+  // const [data] = useState(props);
   return(
-  <div>{data}</div>
+    <>
+    {props &&
+      <ul>
+        <li>{props.id}</li>
+        <li>{props.title}</li>
+        <li>{props.abstract}</li>
+        <li>{props.body}</li>
+      </ul>
+    }
+    </>
   )
 }
 Title.getInitialProps = async ctx => {
-  const url = `https://341d0465-d208-4b63-86d6-021ff1e8bf8a.mock.pstmn.io/news-test/10/news-title`;
+  const url = `${process.env.NEXT_PUBLIC_URL_HOST}news-test/${ctx.query.id}/${ctx.query.title}`;
+  
   try {
     const res = await fetch(url);
-    // if(res.ok){
-    // }
-    console.log("dataaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",res)
     const data = res.ok ? await res.json() : null;
-    return { data };
+    return data;
   } catch (err) {
     return err;
   }
 }
 
+Title.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  abstract: PropTypes.string,
+  body: PropTypes.string,
+};
 export default Title;

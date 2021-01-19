@@ -146,3 +146,102 @@ yarn add sass
 then make ```style.module.scss``` and import to js file
 
 if you have ```.scss``` for all page in project add ```global.scss``` file in ```style/``` and import it in ```_app.js``` like import ```global.css```
+
+## add getInitialProps to page
+
+for this, you should use ```getInitialProps``` in ```_app.js``` 
+- your ```_app.js``` should be class component
+- unlike ```_app.js```, you can use ```getInitialProps``` in functional component
+- change your ```_app.js``` below code :
+```bash
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import App from 'next/app';
+import { END } from 'redux-saga';
+import { wrapper } from 'posts/store';
+
+import 'styles/global.css'
+import 'styles/global.scss'
+class WrappedApp extends App {
+    static getInitialProps = async ({ Component, ctx }) => {
+        // 1. Wait for all page actions to dispatch
+        const pageProps = {
+            ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
+        };
+
+        // 2. Stop the saga if on server
+        if (ctx.req) {
+            ctx.store.dispatch(END);
+            await ctx.store.sagaTask.toPromise();
+        }
+
+        // 3. Return props
+        return {
+            pageProps,
+        };
+    };
+
+    render() {
+        const { Component, pageProps } = this.props;
+        return (
+            <Component {...pageProps} />
+        );
+    }
+}
+
+App.propTypes = {
+    Component: PropTypes.elementType.isRequired,
+    pageProps: PropTypes.object
+};
+export default wrapper.withRedux(WrappedApp);
+```
+- use getInitialProps in page: 
+```bash
+import React, {useState} from 'react';
+import PropTypes from 'prop-types';
+
+const Title = props => {
+  // const [data] = useState(props);
+  return(
+    <>
+    {props &&
+      <ul>
+        <li>{props.id}</li>
+        <li>{props.title}</li>
+        <li>{props.abstract}</li>
+        <li>{props.body}</li>
+      </ul>
+    }
+    </>
+  )
+}
+Title.getInitialProps = async ctx => {
+  const url = `${process.env.NEXT_PUBLIC_URL_HOST}news-test/${ctx.query.id}/${ctx.query.title}`;
+  
+  try {
+    const res = await fetch(url);
+    const data = res.ok ? await res.json() : null;
+    return data;
+  } catch (err) {
+    return err;
+  }
+}
+
+Title.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  abstract: PropTypes.string,
+  body: PropTypes.string,
+};
+export default Title;
+``` 
+## dynamic route 
+for this url ```/news/10/news-title```
+you can make directory as bellow
+```bash
+pages(folder)
+  news(folder)
+    [id](folder)
+      [title].js (file)
+```

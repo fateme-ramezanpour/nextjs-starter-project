@@ -22,6 +22,11 @@ function Page({ linkTo, NavigateTo, title }) {
                     <a>Navigate: {NavigateTo}</a>
                 </Link>
             </nav>
+            <nav>
+                <Link href={'/news/10/news-title'}>
+                    <a>Navigate: news page</a>
+                </Link>
+            </nav>
             {placeholderData && (
                 <pre>
                     <code>{JSON.stringify(placeholderData, null, 2)}</code>
